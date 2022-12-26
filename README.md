@@ -23,3 +23,5 @@ Ansible automation scripts for setting up a new mac machine
   - install rust
 - Install homebrew packages
 - Install homevrew cask packages
+
+had to run this ansible-galaxy collection install community.general
