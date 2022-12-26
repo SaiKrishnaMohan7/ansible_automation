@@ -1,0 +1,21 @@
+---
+
+# Clean Oh My ZSH directory
+- name: Clean up pre ohmyzsh install
+  ansible.builtin.shell:
+    cmd: rm -rf ~/.oh-my-zsh
+
+# Install Oh My ZSH Directory
+- name: Install Oh My ZSH
+  ansible.builtin.shell:
+    cmd: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install plugins
+- name: Install zsh-autosuggestions
+  ansible.builtin.shell:
+    cmd: git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+- name: Install powerlevl10k
+  ansible.builtin.shell:
+    cmd: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+

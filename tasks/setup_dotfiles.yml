@@ -1,0 +1,12 @@
+---
+
+# Clean up .zshrc before yadm pulls it in
+- name: Clean up .zshrc pre yadm
+  ansible.builtin.shell:
+    cmd: rm ~/.zshrc
+
+# NOTE: This will be a url based clone; later update the git remote manually to ssh
+# Clone dotfiles repo with yadm
+- name: Clone dotfiles repo
+  ansible.builtin.shell:
+    cmd: yadm clone "{{ dotfiles_repo }}"

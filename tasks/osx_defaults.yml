@@ -1,0 +1,5 @@
+---
+
+- name: Run .osx dotfiles.
+  ansible.builtin.shell:
+    cmd: sh  "{{ osx_script }}"
