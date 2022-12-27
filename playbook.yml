@@ -1,14 +1,15 @@
-- hosts: localhost
+- hosts: 127.0.0.1
   connection: local
   become: true
+  gather_facts: false
 
   vars_files:
     - config.yml
 
   tasks:
-  - debug:
-      msg: Check we are running in the directory of the script
-    failed_when: not ansible_env.PWD.endswith('/ansible_automation')
+  # - debug:
+  #     msg: Check we are running in the directory of the script
+  #   failed_when: not ansible_env.PWD.endswith('/ansible_automation')
 
   # Plays
   - name: Install Homebrew Packages

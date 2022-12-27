@@ -25,3 +25,10 @@ Ansible automation scripts for setting up a new mac machine
 - Install homevrew cask packages
 
 had to run this ansible-galaxy collection install community.general
+
+
+## Debug
+
+- There is a logfile taht has been commited, use that to debug later
+- [Your /reddit post](https://www.reddit.com/r/ansible/comments/zvyky9/ansible_stuck_at_gathering_facts_when_trying_to/)
+- [Ask differernt post](https://apple.stackexchange.com/questions/452425/ansible-stuck-at-gathering-facts-when-trying-to-run-playbook-to-configure-mac-ru)
