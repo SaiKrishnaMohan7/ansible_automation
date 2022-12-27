@@ -11,18 +11,15 @@ dotfiles_repo_accept_hostkey: true
 
 # run brew upgrade every time before this is run
 homebrew_installed_packages:
-  - ansible
   - git
   - go
   - nmap
   - volta
-  - ssh-copy-id
   - neofetch
   - jq
   - tldr
   - tree
   - htop
-  - tail
   - kubectl
   - helm
   - minikube
@@ -40,7 +37,6 @@ homebrew_cask_apps:
   - firefox
   - slack
   - obsidian
-  - zoom
   # - discord only on personal mac
   - amethyst # tiling management
   - caffiene
