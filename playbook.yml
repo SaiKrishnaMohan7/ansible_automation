@@ -30,6 +30,7 @@
     import_tasks: tasks/configure_osx.yml
     when: configure_osx
 
+# TODO: Requires user input, needs ansible to accommodate that
   - name: Setup rust
-    import_tasks: tasks/install_rust.yml
+    # import_tasks: tasks/install_rust.yml
     when: install_rust
