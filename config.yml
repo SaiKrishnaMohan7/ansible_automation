@@ -27,7 +27,7 @@ homebrew_installed_packages:
   - azure-cli
   - awscli
   - wireshark
-  - yarn
+  # - yarn # will be installed via volta
   - yadm # dotfile management
 
 homebrew_cask_appdir: /Applications
