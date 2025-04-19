@@ -1,31 +1,9 @@
-- hosts: localhost
+- name: Test run
+  hosts: localhost
   connection: local
-  become: true
+  gather_facts: false
 
   tasks:
-  - debug:
-      msg: Check we are running in the directory of the script
-    failed_when: not ansible_env.PWD.endswith('/ansible_automation')
-
-  # Plays
-  - name: Install Homebrew Packages
-    import_tasks: tasks/install_brew_packages.yml
-
-  - name: Install Homebrew Cask Packages
-    import_tasks: tasks/install_brew_cask_packages.yml
-
-  - name: Setup terminal app
-    import_tasks: tasks/setup_terminal_app.yml
-    when: configure_terminal
-
-  - name: Setup dotfiles
-    import_tasks: tasks/setup_dotfiles.yml
-    when: configure_dotfiles
-
-  - name: Configure osx
-    import_tasks: tasks/configure_osx.yml
-    when: configure_osx
-
-  - name: Setup rust
-    import_tasks: tasks/install_rust.yml
-    when: install_rust
+    - name: Print a hello message
+      debug:
+        msg: "Ansible ran successfully! Machine type is {{ machine_type }}"
