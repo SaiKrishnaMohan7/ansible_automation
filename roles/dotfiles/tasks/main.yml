@@ -1,0 +1,9 @@
+- name: Check if .env.dotfiles exists
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.env.dotfiles"
+  register: dotfiles_env
+
+- name: Fail if .env.dotfiles is missing
+  fail:
+    msg: ".env.dotfiles is required. Please run bootstrap.sh first."
+  when: not dotfiles_env.stat.exists
