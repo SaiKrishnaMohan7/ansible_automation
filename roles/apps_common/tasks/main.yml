@@ -19,13 +19,4 @@
     - 1password
     - 1password-cli
     - visual-studio-code
-
-- name: Tap the HashiCorp Homebrew repo
-  homebrew_tap:
-    name: hashicorp/tap
-    state: present
-
-- name: Install Vagrant from HashiCorp tap
-  homebrew:
-    name: hashicorp/tap/vagrant
-    state: present
+    - vagrant
