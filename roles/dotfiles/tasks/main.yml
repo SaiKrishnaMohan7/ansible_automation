@@ -26,15 +26,11 @@
   args:
     creates: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
 
-- name: Tap homebrew/cask-fonts
-  homebrew_tap:
-    name: homebrew/cask-fonts
-    state: present
-
-- name: Install Meslo Nerd Font (recommended for Powerlevel10k)
+- name: Install Meslo Nerd Font (Powerlevel10k)
   homebrew_cask:
     name: font-meslo-lg-nerd-font
     state: present
+
 
 - name: Clone Powerlevel10k
   git:
