@@ -47,5 +47,8 @@
   args:
     creates: ~/.asdf/installs/golang
 
-- name: Set global Go version
-  shell: asdf global golang latest
+- name: Set global Go version via asdf
+  shell: |
+    cd {{ lookup('env', 'HOME') }}
+    asdf set golang latest
+
