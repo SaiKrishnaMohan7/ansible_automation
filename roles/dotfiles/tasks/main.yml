@@ -13,10 +13,10 @@
     name: yadm
     state: present
 
-- name: Clone dotfiles using yadm (from GitHub)
+- name: Clone dotfiles using yadm (only if not already cloned)
   shell: yadm clone https://github.com/saikrishnamohan7/dotfiles
   args:
-    creates: "{{ lookup('env', 'HOME') }}/.yadm"
+    creates: "{{ lookup('env', 'HOME') }}/.local/share/yadm/repo.git"
 
 - name: Install oh-my-zsh (if not already installed)
   shell: |
