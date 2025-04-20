@@ -10,7 +10,7 @@
     - jq              # JSON parsing
     - tree            # Visualize directory trees
     - direnv          # Project-specific envs
-    - go              # Go programming language (runtime + build)
+    - asdf            # Version manager for multiple programming runtimes, my use case: go; will use go plugin
     - nmap            # Port scanner, network discovery, security tools
     - volta           # JS toolchain manager (Node, Yarn, PNPM, etc.)
     - neofetch        # Show system info
@@ -20,7 +20,32 @@
     - wireshark       # Network packet analyzer
 # install rust via rustup to manage rust versions better
 # doing this via brew will install rust system wide and will not allow for multiple versions, less flexible
+# rustup - version manager and installer
+# rustc - compiler
+# cargo - package manager
 - name: Install Rust via rustup
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   args:
     creates: "~/.cargo/bin/rustc"
+
+# NOTE: asdf + .tool-versions + .envrc (direnv) = go version management
+# Both files per project will help manage versions
+# .tool-versions >> golang 1.24.2
+# .envrc use asdf
+- name: Install asdf
+  homebrew:
+    name: asdf
+    state: present
+
+- name: Add Go plugin to asdf
+  shell: asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+  args:
+    creates: ~/.asdf/plugins/golang
+
+- name: Install latest Go version via asdf
+  shell: asdf install golang latest
+  args:
+    creates: ~/.asdf/installs/golang
+
+- name: Set global Go version
+  shell: asdf global golang latest
