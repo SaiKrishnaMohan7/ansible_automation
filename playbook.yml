@@ -27,3 +27,6 @@
     # - dotfiles
     # - { role: apps_personal, when: machine_type == "personal" }
     # - { role: apps_work,     when: machine_type == "work" }
+    - summary
+
+# NOTE: You have to manually change the keyboard shorcut to fire up raycase instead of spotlight

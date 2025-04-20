@@ -1,0 +1,11 @@
+- name: Display manual follow-up steps
+  debug:
+    msg: |
+      🎉 All automation complete!
+
+      📝 Manual post-install steps:
+      - Go to System Settings > Keyboard > Shortcuts > Spotlight
+        → Disable “Show Spotlight Search” and “Show Finder Search Window”
+      - Open Raycast → Preferences → General → Set Hotkey to `Cmd + Space`
+      - Reboot to ensure macOS default tweaks fully apply
+      - Log in to apps like 1Password, Discord, and Spotify

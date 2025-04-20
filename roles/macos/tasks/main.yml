@@ -68,6 +68,10 @@
 - name: Set menu bar clock to 24-hour time format
   shell: defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
 
+- name: Show Bluetooth icon in the menu bar
+  shell: defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true
+
+
 - name: Install dockutil
   homebrew:
     name: dockutil
@@ -100,10 +104,6 @@
 - name: Add Caffeine to login items
   shell: osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Caffeine.app", hidden:false}'
 
-- name: Restart SystemUIServer and Finder to apply changes
-  shell: |
-    killall SystemUIServer || true
-    killall Finder || true
 
 - name: Quit iTerm when all windows are closed
   shell: defaults write com.googlecode.iterm2 QuitWhenAllWindowsClosed -bool true
@@ -117,6 +117,10 @@
 - name: Restart iTerm if running to apply settings
   shell: killall iTerm2 || true
 
+- name: Restart SystemUIServer and Finder to apply changes
+  shell: |
+    killall SystemUIServer || true
+    killall Finder || true
 # For hot-corner manipulation
 # Action | Code
 # No Action | 0
