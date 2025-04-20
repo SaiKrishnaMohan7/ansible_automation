@@ -8,6 +8,11 @@
     msg: ".env.dotfiles is required. Please run bootstrap.sh first."
   when: not dotfiles_env.stat.exists
 
+- name: Install yadm
+  homebrew:
+    name: yadm
+    state: present
+
 - name: Clone dotfiles using yadm (from GitHub)
   shell: yadm clone https://github.com/saikrishnamohan7/dotfiles
   args:
