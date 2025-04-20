@@ -23,7 +23,7 @@
   shell: defaults write com.apple.finder ShowStatusBar -bool true
 
 - name: Set default Finder view to list view
-  shell: defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+  shell: defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
 - name: Disable smart quotes
   shell: defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -117,6 +117,43 @@
 
 - name: Disable reopening saved sessions at startup
   shell: defaults write com.googlecode.iterm2 OpenBookmarkAtStartup -bool false
+
+- name: Open VSCode in Mac native tabs
+  shell: defaults write com.microsoft.VSCode AppleWindowTabbingMode always
+
+- name: Enable the 'reduce transparency' option. Save GPU cycles.
+  shell: defaults write com.apple.universalaccess reduceTransparency -bool true
+
+- name: Set the icon size of Dock items
+  shell: defaults write com.apple.dock tilesize -int 30
+
+- name: Disable natural scrolling
+  shell: defaults write -g com.apple.swipescrolldirection -bool false
+
+# - name: HACKStop iTunes from responding to the keyboard media keys
+#   shell: launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2>/dev/null
+
+- name: Empty Trash securely by default
+  shell: defaults write com.apple.finder EmptyTrashSecurely -bool true
+
+- name: Avoid creating .DS_Store files on network volumes
+  shell: defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+- name: Automatically open a new Finder window when a volume is mounted
+  shell: |
+    defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+    defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+    defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+
+- name: Save to disk (not to iCloud) by default
+  shell: defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+- name: Disable the “Are you sure you want to open this application?” dialog
+  shell: defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+- name: Show battery percentage in menu bar
+  shell: |
+    defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 - name: Restart SystemUIServer and Finder to apply changes
   shell: |
