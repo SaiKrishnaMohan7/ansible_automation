@@ -1,10 +1,46 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Prompt for MACHINE_TYPE
+echo ""
+read -p "🛠️  What kind of machine is this? (personal / work / homelab): " MACHINE_TYPE
+
+case "$MACHINE_TYPE" in
+  personal|work|homelab)
+    echo "✅ MACHINE_TYPE=$MACHINE_TYPE"
+    ;;
+  *)
+    echo "❌ Invalid machine type: '$MACHINE_TYPE'"
+    echo "Choose one of: personal / work / homelab"
+    exit 1
+    ;;
+esac
+
+# Optionally prompt for cloud provider *only* if work or homelab
+CLOUD_PROVIDER=none
+if [[ "$MACHINE_TYPE" == "work" || "$MACHINE_TYPE" == "homelab" ]]; then
+  read -p "☁️  Primary cloud provider? (aws / gcp / azure / none): " CLOUD_PROVIDER
+  case "$CLOUD_PROVIDER" in
+    aws|gcp|azure|none)
+      echo "✅ CLOUD_PROVIDER=$CLOUD_PROVIDER"
+      ;;
+    *)
+      echo "❌ Invalid cloud provider"
+      exit 1
+      ;;
+  esac
+fi
+
+# Write to ~/.env.dotfiles
+cat <<EOF > "$HOME/.env.dotfiles"
+export MACHINE_TYPE=$MACHINE_TYPE
+export CLOUD_PROVIDER=$CLOUD_PROVIDER
+EOF
+
+
 # ----------------------------
 # Config
 # ----------------------------
-MACHINE_TYPE="${1:-personal}" # Default to 'personal' if not passed
 REPO_NAME="ansible_automation"
 ANSIBLE_REPO="https://github.com/saikrishnamohan7/ansible_automation.git"
 PROJECTS_DIR="$HOME/projects"
