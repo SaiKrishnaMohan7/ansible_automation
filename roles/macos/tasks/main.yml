@@ -104,6 +104,10 @@
 - name: Add Caffeine to login items
   shell: osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Caffeine.app", hidden:false}'
 
+- name: Add Raycast to login items
+  shell: |
+    osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Raycast.app", hidden:false}'
+
 
 - name: Quit iTerm when all windows are closed
   shell: defaults write com.googlecode.iterm2 QuitWhenAllWindowsClosed -bool true
@@ -114,13 +118,12 @@
 - name: Disable reopening saved sessions at startup
   shell: defaults write com.googlecode.iterm2 OpenBookmarkAtStartup -bool false
 
-- name: Restart iTerm if running to apply settings
-  shell: killall iTerm2 || true
-
 - name: Restart SystemUIServer and Finder to apply changes
   shell: |
     killall SystemUIServer || true
     killall Finder || true
+
+
 # For hot-corner manipulation
 # Action | Code
 # No Action | 0

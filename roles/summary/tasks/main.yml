@@ -9,3 +9,4 @@
       - Open Raycast → Preferences → General → Set Hotkey to `Cmd + Space`
       - Reboot to ensure macOS default tweaks fully apply
       - Log in to apps like 1Password, Discord, and Spotify
+      - Resart iTerm for all changes to take effect
