@@ -8,3 +8,4 @@
 - awscli
 - helm
 - yarn
+- slack

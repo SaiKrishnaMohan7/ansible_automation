@@ -23,6 +23,6 @@
     - common
     # - dotfiles
     # - macos
-    # - apps_common
+    - apps_common
     # - { role: apps_personal, when: machine_type == "personal" }
     # - { role: apps_work,     when: machine_type == "work" }

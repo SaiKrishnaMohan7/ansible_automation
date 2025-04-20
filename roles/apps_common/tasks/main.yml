@@ -1,0 +1,31 @@
+- name: Install common GUI apps (casks)
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - iterm2
+    - rectangle
+    - docker
+    - obsidian
+    - caffeine
+    - spotify
+    - steam
+    - drawio
+    - discord
+    - signal
+    - firefox
+    - raycast
+    - postman
+    - 1password
+    - 1password-cli
+    - visual-studio-code
+
+- name: Tap the HashiCorp Homebrew repo
+  homebrew_tap:
+    name: hashicorp/tap
+    state: present
+
+- name: Install Vagrant from HashiCorp tap
+  homebrew:
+    name: hashicorp/tap/vagrant
+    state: present
