@@ -8,6 +8,15 @@
     msg: ".env.dotfiles is required. Please run bootstrap.sh first."
   when: not dotfiles_env.stat.exists
 
+- name: Load .env.dotfiles into Ansible
+  shell: source ~/.env.dotfiles && env
+  register: dotfiles_env_vars
+
+- name: Parse MACHINE_TYPE from env
+  set_fact:
+    MACHINE_TYPE: "{{ dotfiles_env_vars.stdout_lines | select('search', '^MACHINE_TYPE=') | list | first | regex_replace('MACHINE_TYPE=', '') }}"
+
+
 - name: Install yadm
   homebrew:
     name: yadm
