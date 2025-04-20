@@ -10,3 +10,4 @@
       - Reboot to ensure macOS default tweaks fully apply
       - Log in to apps like 1Password, Discord, and Spotify
       - Restart iTerm for all changes to take effect
+      - powerlevel10k will also be manual
