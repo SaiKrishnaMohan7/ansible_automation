@@ -3,7 +3,26 @@
   connection: local
   gather_facts: false
 
-  tasks:
-    - name: Print a hello message
-      debug:
-        msg: "Ansible ran successfully! Machine type is {{ machine_type }}"
+  vars:
+    machine_type: "{{ machine_type | default('personal') }}"
+
+  pre_tasks:
+    - name: Check if Homebrew is installed
+      command: which brew
+      register: brew_check
+      changed_when: false
+      ignore_errors: true
+
+    - name: Fail if Homebrew is not installed
+      fail:
+        msg: >
+          Homebrew is not installed. Please run bootstrap.sh before using Ansible.
+      when: brew_check.rc != 0
+
+  roles:
+    - common
+    # - dotfiles
+    # - macos
+    # - apps_common
+    # - { role: apps_personal, when: machine_type == "personal" }
+    # - { role: apps_work,     when: machine_type == "work" }

@@ -1,9 +1,4 @@
 ---
-- name: Ensure Homebrew is installed
-  homebrew:
-    name: brew
-    state: present
-
 - name: Install CLI utilities via Homebrew
   homebrew:
     name: "{{ item }}"
