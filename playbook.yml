@@ -19,10 +19,11 @@
           Homebrew is not installed. Please run bootstrap.sh before using Ansible.
       when: brew_check.rc != 0
 
+  # Will run in this order
   roles:
     - common
-    # - dotfiles
-    # - macos
     - apps_common
+    - macos
+    # - dotfiles
     # - { role: apps_personal, when: machine_type == "personal" }
     # - { role: apps_work,     when: machine_type == "work" }

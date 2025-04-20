@@ -1,0 +1,130 @@
+- name: Enable fast key repeat
+  shell: defaults write -g KeyRepeat -int 1
+
+- name: Reduce key repeat delay
+  shell: defaults write -g InitialKeyRepeat -int 10
+
+- name: Disable press-and-hold accent menu
+  shell: defaults write -g ApplePressAndHoldEnabled -bool false
+
+- name: Always show scroll bars
+  shell: defaults write -g AppleShowScrollBars -string "Always"
+
+- name: Show all filename extensions in Finder
+  shell: defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+- name: Show hidden files in Finder
+  shell: defaults write com.apple.finder AppleShowAllFiles -bool true
+
+- name: Show path bar in Finder
+  shell: defaults write com.apple.finder ShowPathbar -bool true
+
+- name: Show status bar in Finder
+  shell: defaults write com.apple.finder ShowStatusBar -bool true
+
+- name: Set default Finder view to list view
+  shell: defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+- name: Disable smart quotes
+  shell: defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+- name: Disable smart dashes
+  shell: defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+- name: Enable full keyboard access (e.g. Tab in dialogs)
+  shell: defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+- name: Expand save panel by default
+  shell: defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+- name: Expand print panel by default
+  shell: defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+
+- name: Save screenshots as PNG
+  shell: defaults write com.apple.screencapture type -string "png"
+
+- name: Save screenshots to ~/Screenshots
+  shell: |
+    mkdir -p ~/Screenshots
+    defaults write com.apple.screencapture location -string "$HOME/Screenshots"
+
+- name: Use scale effect for window minimizing
+  shell: defaults write com.apple.dock mineffect -string "scale"
+
+- name: Speed up Mission Control animation
+  shell: defaults write com.apple.dock expose-animation-duration -float 0.1
+
+- name: Disable animation when switching workspaces
+  shell: defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
+
+- name: Disable most macOS UI animations
+  shell: defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+
+- name: Set top-left hot corner to Mission Control
+  shell: |
+    defaults write com.apple.dock wvous-tl-corner -int 2
+    defaults write com.apple.dock wvous-tl-modifier -int 0
+
+
+- name: Install dockutil
+  homebrew:
+    name: dockutil
+    state: present
+
+- name: Remove all apps from Dock
+  shell: dockutil --remove all --no-restart
+
+- name: Add apps to Dock
+  shell: |
+    dockutil --add "/Applications/Obsidian.app" --no-restart
+    dockutil --add "/Applications/Visual Studio Code.app" --no-restart
+    dockutil --add "/Applications/Docker.app" --no-restart
+    dockutil --add "/Applications/draw.io.app" --no-restart
+    dockutil --add "/Applications/Steam.app" --no-restart
+    dockutil --add "/Applications/Discord.app" --no-restart
+    dockutil --add "/Applications/Signal.app" --no-restart
+    dockutil --add "/Applications/iTerm.app" --no-restart
+    dockutil --add "/Applications/Spotify.app" --no-restart
+    dockutil --add "/Applications/Firefox.app" --no-restart
+    dockutil --add "/Applications/Postman.app" --no-restart
+    dockutil --add "/Applications/1Password.app" --no-restart
+
+- name: Restart Dock to apply changes
+  shell: killall Dock || true
+
+- name: Remove all login items
+  shell: osascript -e 'tell application "System Events" to delete every login item'
+
+- name: Add Caffeine to login items
+  shell: osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Caffeine.app", hidden:false}'
+
+- name: Restart SystemUIServer and Finder to apply changes
+  shell: |
+    killall SystemUIServer || true
+    killall Finder || true
+
+- name: Quit iTerm when all windows are closed
+  shell: defaults write com.googlecode.iterm2 QuitWhenAllWindowsClosed -bool true
+
+- name: Disable "Confirm closing multiple sessions"
+  shell: defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+- name: Disable reopening saved sessions at startup
+  shell: defaults write com.googlecode.iterm2 OpenBookmarkAtStartup -bool false
+
+- name: Restart iTerm if running to apply settings
+  shell: killall iTerm2 || true
+
+# For hot-corner manipulation
+# Action | Code
+# No Action | 0
+# Mission Control | 2
+# Application Windows | 3
+# Desktop | 4
+# Start Screen Saver | 5
+# Disable Screen Saver | 6
+# Dashboard (deprecated) | 7
+# Put Display to Sleep | 10
+# Launchpad | 11
+# Notification Center | 12
+# Quick Note | 13
