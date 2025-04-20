@@ -1,1 +1,0 @@
-brew install  git go nmap volta ssh-copy-id neofetch jq tldr tree htop kubectl helm minikube terraform azure-cli awscli  wireshark yarn

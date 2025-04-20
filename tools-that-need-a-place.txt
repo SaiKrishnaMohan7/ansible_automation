@@ -1,0 +1,10 @@
+- wget
+- fzf
+- ripgrep
+- neovim
+- git-delta
+- ssh-copy-id # useful when setting up remote machines
+- azure-cli
+- awscli
+- helm
+- yarn

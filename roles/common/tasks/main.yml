@@ -1,0 +1,31 @@
+---
+- name: Ensure Homebrew is installed
+  homebrew:
+    name: brew
+    state: present
+
+- name: Install CLI utilities via Homebrew
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - coreutils       # macOS comes with BSD versions, not GNU ones. GNU versions better
+    - htop            # System monitor
+    - bat             # Prettified `cat`
+    - jq              # JSON parsing
+    - tree            # Visualize directory trees
+    - direnv          # Project-specific envs
+    - go              # Go programming language (runtime + build)
+    - nmap            # Port scanner, network discovery, security tools
+    - volta           # JS toolchain manager (Node, Yarn, PNPM, etc.)
+    - neofetch        # Show system info
+    - kubectl         # Kubernetes CLI
+    - minikube        # Local Kubernetes cluster
+    - terraform       # IaC tool (HashiCorp)
+    - wireshark       # Network packet analyzer
+# install rust via rustup to manage rust versions better
+# doing this via brew will install rust system wide and will not allow for multiple versions, less flexible
+- name: Install Rust via rustup
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  args:
+    creates: "{{ ansible_env.HOME }}/.cargo/bin/rustc" # `creates` makes it idempotent — only runs if Rust isn’t already installed
