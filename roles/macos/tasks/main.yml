@@ -123,6 +123,7 @@
 
 - name: Enable the 'reduce transparency' option. Save GPU cycles.
   shell: defaults write com.apple.universalaccess reduceTransparency -bool true
+  ignore_errors: true
 
 - name: Set the icon size of Dock items
   shell: defaults write com.apple.dock tilesize -int 30
