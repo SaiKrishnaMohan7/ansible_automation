@@ -23,4 +23,4 @@
 - name: Install Rust via rustup
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   args:
-    creates: "{{ ansible_env.HOME }}/.cargo/bin/rustc" # `creates` makes it idempotent — only runs if Rust isn’t already installed
+    creates: "~/.cargo/bin/rustc"
