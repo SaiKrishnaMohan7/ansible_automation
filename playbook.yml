@@ -1,9 +1,15 @@
-- name: Test run
+- name: Mac bootstrap
   hosts: localhost
   connection: local
-  gather_facts: false
+  gather_facts: true
 
-  tasks:
-    - name: Print a hello message
-      debug:
-        msg: "Ansible ran successfully! Machine type is {{ machine_type }}"
+  vars:
+    machine_type: "{{ machine_type | default('personal') }}"
+
+  roles:
+    - common
+    # - dotfiles
+    # - macos
+    # - apps_common
+    # - { role: apps_personal, when: machine_type == "personal" }
+    # - { role: apps_work,     when: machine_type == "work" }
