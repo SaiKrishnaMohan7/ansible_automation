@@ -5,9 +5,11 @@
 
       📝 Manual post-install steps:
       - Go to System Settings > Keyboard > Shortcuts > Spotlight
-        → Disable “Show Spotlight Search” and “Show Finder Search Window”
+      → Disable “Show Spotlight Search” and “Show Finder Search Window”
       - Open Raycast → Preferences → General → Set Hotkey to `Cmd + Space`
       - Reboot to ensure macOS default tweaks fully apply
       - Log in to apps like 1Password, Discord, and Spotify
       - Restart iTerm for all changes to take effect
-      - powerlevel10k will also be manual
+      - 💡 Set your terminal emulator (iTerm/Terminal) font to:
+          "MesloLGS NF Regular"
+          To fully enable Powerlevel10k visuals and glyphs.
