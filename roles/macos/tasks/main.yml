@@ -65,6 +65,8 @@
     defaults write com.apple.dock wvous-tl-corner -int 2
     defaults write com.apple.dock wvous-tl-modifier -int 0
 
+- name: Set menu bar clock to 24-hour time format
+  shell: defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
 
 - name: Install dockutil
   homebrew:
