@@ -5,8 +5,8 @@ set -euo pipefail
 # Config
 # ----------------------------
 MACHINE_TYPE="${1:-personal}" # Default to 'personal' if not passed
-REPO_NAME="ansible-automation"
-ANSIBLE_REPO="https://github.com/saikrishnamohan7/ansible-automation.git"
+REPO_NAME="ansible_automation"
+ANSIBLE_REPO="https://github.com/saikrishnamohan7/ansible_automation.git"
 PROJECTS_DIR="$HOME/projects"
 CLONE_DIR="$PROJECTS_DIR/$REPO_NAME"
 
