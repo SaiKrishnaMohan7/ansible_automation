@@ -5,7 +5,6 @@
   loop:
     - slack
     - microsoft-teams
-    - 
   tags: [work, apps]
 
 - name: Install work-specific CLI tools

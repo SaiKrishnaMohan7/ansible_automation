@@ -103,20 +103,31 @@
 - name: Remove all apps from Dock
   shell: dockutil --remove all --no-restart
 
-- name: Add apps to Dock
+- name: Add common apps to dock
   shell: |
     dockutil --add "/Applications/Obsidian.app" --no-restart
     dockutil --add "/Applications/Visual Studio Code.app" --no-restart
     dockutil --add "/Applications/Docker.app" --no-restart
     dockutil --add "/Applications/draw.io.app" --no-restart
-    dockutil --add "/Applications/Steam.app" --no-restart
-    dockutil --add "/Applications/Discord.app" --no-restart
-    dockutil --add "/Applications/Signal.app" --no-restart
     dockutil --add "/Applications/iTerm.app" --no-restart
-    dockutil --add "/Applications/Spotify.app" --no-restart
     dockutil --add "/Applications/Firefox.app" --no-restart
     dockutil --add "/Applications/Postman.app" --no-restart
     dockutil --add "/Applications/1Password.app" --no-restart
+
+- name: Add personal apps to Dock
+  shell: |
+    dockutil --add "/Applications/Steam.app" --no-restart
+    dockutil --add "/Applications/Discord.app" --no-restart
+    dockutil --add "/Applications/Signal.app" --no-restart
+    dockutil --add "/Applications/Spotify.app" --no-restart
+    dockutil --add "/Applications/UTM.app" --no-restart
+  when: lookup('env', 'MACHINE_TYPE') == "personal"
+
+- name: Add personal apps to Dock
+  shell: |
+    dockutil --add "/Applications/Slack.app" --no-restart
+    dockutil --add "/Applications/Microsoft Teams.app" --no-restart
+  when: lookup('env', 'MACHINE_TYPE') == "work"
 
 - name: Restart Dock to apply changes
   shell: killall Dock || true
