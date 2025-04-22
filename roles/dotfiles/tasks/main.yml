@@ -55,7 +55,7 @@
 
 - name: DEBUG: Show parsed MACHINE_TYPE
   debug:
-    msg: "Parsed MACHINE_TYPE: {{ MACHINE_TYPE }}"
+    var: MACHINE_TYPE
 
 - name: Ask for multiple SSH identities (if MACHINE_TYPE is work)
   pause:
