@@ -1,0 +1,25 @@
+- name: Install work-specific GUI apps (casks)
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - slack
+    - microsoft-teams
+    - 
+  tags: [work, apps]
+
+- name: Install work-specific CLI tools
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - awscli
+  tags: [work, cli]
+
+- name: Add AWS CLI to PATH if not already available
+  lineinfile:
+    path: "{{ lookup('env', 'HOME') }}/.zshrc"
+    line: 'export PATH="$HOME/.aws/bin:$PATH"'
+    insertafter: EOF
+  when: lookup('env', 'CLOUD_PROVIDER') == 'aws'
+  tags: [work, cloud]

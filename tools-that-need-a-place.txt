@@ -6,6 +6,8 @@
 - ssh-copy-id # useful when setting up remote machines
 - azure-cli
 - awscli
+- gcpcli
 - helm
 - yarn
 - slack
+- teams

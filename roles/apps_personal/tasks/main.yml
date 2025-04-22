@@ -1,4 +1,4 @@
-- name: Install common GUI apps personal (casks)
+- name: Install personal GUI apps (casks)
   homebrew_cask:
     name: "{{ item }}"
     state: present
