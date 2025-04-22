@@ -53,7 +53,7 @@
     state: directory
     mode: '0700'
 
-- name: DEBUG: Show parsed MACHINE_TYPE
+- name: Show parsed MACHINE_TYPE
   debug:
     var: MACHINE_TYPE
 
