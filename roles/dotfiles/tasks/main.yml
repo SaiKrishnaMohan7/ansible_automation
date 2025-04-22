@@ -53,9 +53,9 @@
     state: directory
     mode: '0700'
 
-- name: Show parsed MACHINE_TYPE
-  debug:
-    var: MACHINE_TYPE
+# - name: Show parsed MACHINE_TYPE
+#   debug:
+#     var: MACHINE_TYPE
 
 - name: Ask for multiple SSH identities (if MACHINE_TYPE is work)
   pause:
