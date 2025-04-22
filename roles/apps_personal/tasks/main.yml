@@ -1,0 +1,9 @@
+- name: Install common GUI apps personal (casks)
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - spotify
+    - steam
+    - discord
+    - signal

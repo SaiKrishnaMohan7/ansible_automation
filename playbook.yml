@@ -25,8 +25,13 @@
     - apps_common
     - macos
     - dotfiles
-    # - { role: apps_personal, when: machine_type == "personal" }
-    # - { role: apps_work,     when: machine_type == "work" }
+
+    - role: apps_personal
+      when: lookup('env', 'MACHINE_TYPE') == "personal"
+
+    # - role: apps_work
+    #   when: lookup('env', 'MACHINE_TYPE') == "work"
+
     - summary
 
 # NOTE: You have to manually change the keyboard shorcut to fire up raycast instead of spotlight
