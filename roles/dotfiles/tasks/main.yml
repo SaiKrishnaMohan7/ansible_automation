@@ -53,6 +53,10 @@
     state: directory
     mode: '0700'
 
+- name: DEBUG: Show parsed MACHINE_TYPE
+  debug:
+    msg: "Parsed MACHINE_TYPE: {{ MACHINE_TYPE }}"
+
 - name: Ask for multiple SSH identities (if MACHINE_TYPE is work)
   pause:
     prompt: "🛡️  Use multiple SSH identities? (y/n)"
