@@ -13,6 +13,7 @@
     state: present
   loop:
     - awscli
+    - aws-sam-cli
   tags: [work, cli]
 
 - name: Add AWS CLI to PATH if not already available
