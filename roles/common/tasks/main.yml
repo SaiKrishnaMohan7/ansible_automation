@@ -18,6 +18,7 @@
     - minikube        # Local Kubernetes cluster
     - terraform       # IaC tool (HashiCorp)
     - wireshark       # Network packet analyzer
+    - magic-wormhole  # Securely send files and text between computers
 # install rust via rustup to manage rust versions better
 # doing this via brew will install rust system wide and will not allow for multiple versions, less flexible
 # rustup - version manager and installer
